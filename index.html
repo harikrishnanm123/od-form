@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student On Time Duty Form for Symposium</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="time"],
+        textarea,
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function toggleFields() {
+            const eventType = document.getElementById('event-type').value;
+            const pptField = document.getElementById('ppt-field');
+            const eventNameField = document.getElementById('event-name-field');
+            
+            if (eventType === 'Technical') {
+                pptField.style.display = 'block';
+                eventNameField.style.display = 'none';
+            } else {
+                pptField.style.display = 'none';
+                eventNameField.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Student On Time Duty Form for Symposium</h1>
+    <form action="https://formspree.io/f/mwpeobqv" method="POST" enctype="multipart/form-data">
+        <!-- Student Information -->
+        <div>
+            <label for="student-name">Student Name:</label>
+            <input type="text" id="student-name" name="student-name" required>
+        </div>
+        <div>
+            <label for="student-id">Student ID:</label>
+            <input type="text" id="student-id" name="student-id" required>
+        </div>
+        <div>
+            <label for="dept">Department:</label>
+            <input type="text" id="dept" name="dept" required>
+        </div>
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <!-- Duty Information -->
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+        </div>
+        <div>
+            <label for="od-request-count">OD Request Count:</label>
+            <input type="text" id="od-request-count" name="od-request-count">
+        </div>
+        <!-- Event Type -->
+        <div>
+            <label for="event-type">Event Type:</label>
+            <select id="event-type" name="event-type" onchange="toggleFields()" required>
+                <option value="">Select Event Type</option>
+                <option value="Technical">Technical</option>
+                <option value="Non-Technical">Non-Technical</option>
+            </select>
+        </div>
+        <!-- Conditional Fields -->
+        <div id="ppt-field" style="display:none;">
+            <label for="ppt-file">Upload Your Presentation (PPT):</label>
+            <input type="file" id="ppt-file" name="ppt-file" accept=".ppt,.pptx">
+        </div>
+        <div id="event-name-field" style="display:none;">
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="event-name">
+        </div>
+        <!-- College Name -->
+        <div>
+            <label for="attending-university">Attending University:</label>
+            <input type="text" id="attending-university" name="attending-university" required>
+        </div>
+        <!-- Verification Payment Screenshot -->
+        <div>
+            <label for="payment-screenshot">Upload Verification Payment Screenshot:</label>
+            <input type="file" id="payment-screenshot" name="payment-screenshot" accept="image/*" required>
+        </div>
+        <!-- Submit Button -->
+        <div>
+            <input type="submit" value="Submit Duty Report">
+        </div>
+    </form>
+</body>
+</html>
